@@ -4,13 +4,95 @@ This is a desktop application for managing a personal library of books, built us
 
 ## Features
 
-*   User Registration: New users can create an account.
-*   User Login: Existing users can log in to access their library.
-*   Per-User Libraries: Each user has their own distinct collection of books. Books added by one user are not visible to others.
-*   Add Books: Users can add new books to their library with details like title, author, and year of publication.
-*   View Books: Users can view a list of all books currently in their library.
-*   Real-time Updates: The book list updates in real-time as changes occur in the database.
-*   Logout: Users can log out of their account.
+*   **User Registration:** New users can create an account.
+*   **User Login:** Existing users can log in to access their library.
+*   **Per-User Libraries:** Each user has their own distinct collection of books.
+*   **Add Books:** Users can add new books to their library (title, author, year).
+*   **View Books:** Users can view a list of all books in their library.
+*   **Real-time Updates:** The book list reflects database changes automatically.
+*   **Logout:** Securely log out of the application.
+
+## Application Showcase
+
+### 1. Login Screen
+
+New users can navigate to the registration page, while existing users can log in with their email and password.
+
+*(Image: `login-screen.png` - Replace with your actual image URL)*
+![Login Screen](https://via.placeholder.com/600x400.png?text=Login+Screen+Screenshot)
+*Caption: The initial login window.*
+
+---
+
+### 2. Registration Screen
+
+Users can register by providing a display name, email, and password. Basic validation is performed.
+
+*(Image: `registration-screen.png` - Replace with your actual image URL)*
+![Registration Screen](https://via.placeholder.com/600x400.png?text=Registration+Screen+Screenshot)
+*Caption: User registration form.*
+
+---
+
+### 3. Main Library View (Book List)
+
+After logging in, users see their personal library. If it's empty, a message prompts them to add books.
+
+*(Image: `main-frame-empty.png` - Replace with your actual image URL)*
+![Main Frame Empty](https://via.placeholder.com/600x450.png?text=Main+Frame+Empty+Screenshot)
+*Caption: Main application window showing an empty library for a new user.*
+
+---
+
+### 4. Adding a Book
+
+Users can add books using the form at the bottom of the main window.
+
+*(Image: `main-frame-adding-book.png` - Replace with your actual image URL)*
+![Main Frame Adding Book](https://via.placeholder.com/600x450.png?text=Main+Frame+Adding+Book+Screenshot)
+*Caption: Input fields for adding a new book.*
+
+---
+
+### 5. Library with Books
+
+Once books are added, they appear in the main list area, displaying their ID, title, author, and year.
+
+*(Image: `main-frame-with-books.png` - Replace with your actual image URL)*
+![Main Frame With Books](https://via.placeholder.com/600x450.png?text=Main+Frame+With+Books+Screenshot)
+*Caption: Library view populated with several books.*
+
+---
+
+### 6. Per-User Data Isolation
+
+Each user sees only their own books. Logging in with a different account will show a different set of books (or an empty library if that user hasn't added any).
+
+*(Image: `user-b-library.png` - Could be a conceptual image or a screenshot of another user's library)*
+![User B Library](https://via.placeholder.com/600x450.png?text=User+B+Library+Screenshot)
+*Caption: Example of a different user's library, showing data isolation.*
+
+---
+
+### 7. Firebase Console - Authentication
+
+Registered users appear in the Firebase Authentication console.
+
+*(Image: `firebase-auth-users.png` - Replace with your actual image URL)*
+![Firebase Auth Users](https://via.placeholder.com/700x300.png?text=Firebase+Authentication+Users+Screenshot)
+*Caption: Users listed in the Firebase Authentication section.*
+
+---
+
+### 8. Firebase Console - Realtime Database
+
+Book data is stored under each user's unique ID (UID) in the Realtime Database.
+
+*(Image: `firebase-database-structure.png` - Replace with your actual image URL)*
+![Firebase Database Structure](https://via.placeholder.com/700x400.png?text=Firebase+Database+Structure+Screenshot)
+*Caption: Data structure in Firebase Realtime Database showing per-user book collections.*
+
+---
 
 ## Prerequisites
 
