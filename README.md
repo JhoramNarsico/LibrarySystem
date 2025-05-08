@@ -19,6 +19,8 @@ This is a desktop application for managing a personal library of books, built us
 New users can navigate to the registration page, while existing users can log in with their email and password.
 
 `login-screen.png` 
+![Login Screen](login-screen.png)
+*Caption: User registration form.*
 *Caption: The initial login window.*
 
 ---
