@@ -26,9 +26,7 @@ New users can navigate to the registration page, while existing users can log in
 
 Users can register by providing a display name, email, and password. Basic validation is performed.
 
-*(Image: `registration-screen.png` - Replace with your actual image URL)*
-![Registration Screen](https://via.placeholder.com/600x400.png?text=Registration+Screen+Screenshot)
-*Caption: User registration form.*
+![Registration Screen](registration-screen)
 
 ---
 
