@@ -1,9 +1,9 @@
 package model;
 
 public class User {
-    private final String uid; // Firebase User ID
+    private final String uid; 
     private final String email;
-    private String displayName; // Optional: if you store it
+    private String displayName; 
 
     public User(String uid, String email) {
         this.uid = uid;
