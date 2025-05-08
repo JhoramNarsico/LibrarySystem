@@ -46,23 +46,19 @@ Each user sees only their own books. Logging in with a different account will sh
 
 ---
 
-### 7. Firebase Console - Authentication
+### 5. Firebase Console - Authentication
 
 Registered users appear in the Firebase Authentication console.
 
-*(Image: `firebase-auth-users.png` - Replace with your actual image URL)*
-![Firebase Auth Users](https://via.placeholder.com/700x300.png?text=Firebase+Authentication+Users+Screenshot)
-*Caption: Users listed in the Firebase Authentication section.*
+![Firebase Auth Users](authentication.png)
 
 ---
 
-### 8. Firebase Console - Realtime Database
+### 6. Firebase Console - Realtime Database
 
 Book data is stored under each user's unique ID (UID) in the Realtime Database.
 
-*(Image: `firebase-database-structure.png` - Replace with your actual image URL)*
 ![Firebase Database Structure](https://via.placeholder.com/700x400.png?text=Firebase+Database+Structure+Screenshot)
-*Caption: Data structure in Firebase Realtime Database showing per-user book collections.*
 
 ---
 
