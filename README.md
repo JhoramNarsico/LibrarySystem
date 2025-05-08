@@ -34,9 +34,7 @@ Users can register by providing a display name, email, and password. Basic valid
 
 After logging in, users see their personal library. If it's empty, a message prompts them to add books.
 
-*(Image: `main-frame-empty.png` - Replace with your actual image URL)*
-![Main Frame Empty](https://via.placeholder.com/600x450.png?text=Main+Frame+Empty+Screenshot)
-*Caption: Main application window showing an empty library for a new user.*
+![Main Frame Empty](mainlibrary.png)
 
 ---
 
