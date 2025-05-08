@@ -26,7 +26,7 @@ New users can navigate to the registration page, while existing users can log in
 
 Users can register by providing a display name, email, and password. Basic validation is performed.
 
-![Registration Screen](registration-screen)
+![Registration Screen](registration-screen.png)
 
 ---
 
