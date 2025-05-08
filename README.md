@@ -38,33 +38,11 @@ After logging in, users see their personal library. If it's empty, a message pro
 
 ---
 
-### 4. Adding a Book
-
-Users can add books using the form at the bottom of the main window.
-
-*(Image: `main-frame-adding-book.png` - Replace with your actual image URL)*
-![Main Frame Adding Book](https://via.placeholder.com/600x450.png?text=Main+Frame+Adding+Book+Screenshot)
-*Caption: Input fields for adding a new book.*
-
----
-
-### 5. Library with Books
-
-Once books are added, they appear in the main list area, displaying their ID, title, author, and year.
-
-*(Image: `main-frame-with-books.png` - Replace with your actual image URL)*
-![Main Frame With Books](https://via.placeholder.com/600x450.png?text=Main+Frame+With+Books+Screenshot)
-*Caption: Library view populated with several books.*
-
----
-
-### 6. Per-User Data Isolation
+### 4. Per-User Data Isolation
 
 Each user sees only their own books. Logging in with a different account will show a different set of books (or an empty library if that user hasn't added any).
 
-*(Image: `user-b-library.png` - Could be a conceptual image or a screenshot of another user's library)*
-![User B Library](https://via.placeholder.com/600x450.png?text=User+B+Library+Screenshot)
-*Caption: Example of a different user's library, showing data isolation.*
+![User B Library](other-user.png)
 
 ---
 
