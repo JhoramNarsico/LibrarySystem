@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
-import org.json.JSONObject; // <-- ADD THIS IMPORT
+import org.json.JSONObject; 
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -25,13 +25,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import model.Book;
-import model.User; // <-- ADD THIS IMPORT
-
+import model.User; 
 
 public class DatabaseHandler {
 
-    private static final String FIREBASE_API_KEY = "AIzaSyBB-9BrEzZF_fTd6QMHL2ecn2xtZkpkIwI"; // Replace with your actual Web API Key
-    private static final String FIREBASE_DATABASE_URL = "https://itcc-11-libary-default-rtdb.firebaseio.com/"; // Ensure this is correct
+    private static final String FIREBASE_API_KEY = "AIzaSyBB-9BrEzZF_fTd6QMHL2ecn2xtZkpkIwI"; 
+    private static final String FIREBASE_DATABASE_URL = "https://itcc-11-libary-default-rtdb.firebaseio.com/"; 
     private static final String SERVICE_ACCOUNT_KEY_PATH = "serviceAccountKey.json";
 
     private DatabaseReference databaseRootRef;
@@ -81,12 +80,11 @@ public class DatabaseHandler {
                 FirebaseApp.initializeApp(options);
                 System.out.println("Firebase Admin SDK initialized successfully.");
             } else {
-                FirebaseApp app = FirebaseApp.getInstance(); // Use the default app
+                FirebaseApp app = FirebaseApp.getInstance(); 
                 System.out.println("Firebase Admin SDK already initialized. Using existing app: " + app.getName());
             }
 
             firebaseAuth = FirebaseAuth.getInstance();
-            // The root reference is now "library_app_data", user-specific paths will be built upon this
             databaseRootRef = FirebaseDatabase.getInstance().getReference("library_app_data");
             System.out.println("FirebaseAuth and DatabaseReference obtained.");
 
@@ -170,7 +168,7 @@ public class DatabaseHandler {
 
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(email)
-                .setEmailVerified(false) // Typically false, verification email sent separately
+                .setEmailVerified(false) 
                 .setPassword(password)
                 .setDisplayName(displayName)
                 .setDisabled(false);
@@ -191,7 +189,6 @@ public class DatabaseHandler {
         return future;
     }
 
-    // MODIFIED: Returns a User object on success, null on failure
     public User authenticateUser(String email, String password) {
         if (initializationFailed) {
             System.err.println("Firebase Admin SDK not initialized. Authentication via REST API might still work if API key is valid, but other features will be broken.");
@@ -225,10 +222,9 @@ public class DatabaseHandler {
                     String responseBody = scanner.useDelimiter("\\A").next();
                     JSONObject jsonResponse = new JSONObject(responseBody);
                     String uid = jsonResponse.getString("localId");
-                    String userEmail = jsonResponse.getString("email"); // email is also in response
-                    // String displayName = jsonResponse.optString("displayName", ""); // Optional: get display name
+                    String userEmail = jsonResponse.getString("email"); 
                     System.out.println("Authentication successful for: " + userEmail + " (UID: " + uid + ")");
-                    return new User(uid, userEmail); // Optionally add displayName if you parse and store it
+                    return new User(uid, userEmail); 
                 }
             } else {
                 System.err.println("Authentication failed for: " + email + ". Response Code: " + responseCode);
@@ -244,13 +240,12 @@ public class DatabaseHandler {
         } catch (IOException e) {
             System.err.println("An error occurred during authentication REST API call for " + email + ": " + e.getMessage());
             return null;
-        } catch (org.json.JSONException e) { // Catch JSON parsing exception
+        } catch (org.json.JSONException e) { 
             System.err.println("Error parsing Firebase Auth JSON response: " + e.getMessage());
             return null;
         }
     }
 
-    // MODIFIED: Accepts userID
     public void addBook(String userID, Book book) {
         if (initializationFailed || databaseRootRef == null) {
             System.err.println("Database reference not initialized (or init failed). Cannot add book.");
@@ -260,7 +255,6 @@ public class DatabaseHandler {
             System.err.println("UserID is null or empty. Cannot add book to user-specific library.");
             return;
         }
-        // Path changes to include userID
         DatabaseReference userBooksRef = databaseRootRef.child("user_libraries").child(userID).child("books");
         String newBookId = userBooksRef.push().getKey();
         System.out.println("Adding book for user " + userID + " with generated ID: " + newBookId + " Title: " + book.getTitle());
@@ -283,7 +277,6 @@ public class DatabaseHandler {
         }
     }
 
-    // MODIFIED: Accepts userID
     public void addBooksValueEventListener(String userID, ValueEventListener listener) {
         if (initializationFailed || databaseRootRef == null) {
             System.err.println("Database reference not initialized (or init failed). Cannot add listener.");
@@ -293,13 +286,11 @@ public class DatabaseHandler {
             System.err.println("UserID is null or empty. Cannot add listener to user-specific library.");
             return;
         }
-        // Path changes to include userID
         DatabaseReference userBooksRef = databaseRootRef.child("user_libraries").child(userID).child("books");
         System.out.println("Adding ValueEventListener to books node for user: " + userID);
         userBooksRef.addValueEventListener(listener);
     }
 
-    // MODIFIED: Accepts userID
     public void removeBooksValueEventListener(String userID, ValueEventListener listener) {
         if (initializationFailed || databaseRootRef == null) {
             System.err.println("Database reference not initialized (or init failed). Cannot remove listener.");
@@ -309,7 +300,6 @@ public class DatabaseHandler {
             System.err.println("UserID is null or empty. Cannot remove listener from user-specific library.");
             return;
         }
-        // Path changes to include userID
         DatabaseReference userBooksRef = databaseRootRef.child("user_libraries").child(userID).child("books");
         System.out.println("Removing ValueEventListener from books node for user: " + userID);
         userBooksRef.removeEventListener(listener);
