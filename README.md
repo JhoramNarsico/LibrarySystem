@@ -58,7 +58,7 @@ Registered users appear in the Firebase Authentication console.
 
 Book data is stored under each user's unique ID (UID) in the Realtime Database.
 
-![Firebase Database Structure](https://via.placeholder.com/700x400.png?text=Firebase+Database+Structure+Screenshot)
+![Firebase Database Structure](realtime.png)
 
 ---
 
