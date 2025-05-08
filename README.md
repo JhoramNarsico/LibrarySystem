@@ -18,8 +18,7 @@ This is a desktop application for managing a personal library of books, built us
 
 New users can navigate to the registration page, while existing users can log in with their email and password.
 
-*(Image: `login-screen.png` - Replace with your actual image URL)*
-![Login Screen](https://via.placeholder.com/600x400.png?text=Login+Screen+Screenshot)
+`login-screen.png` 
 *Caption: The initial login window.*
 
 ---
