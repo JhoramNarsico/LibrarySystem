@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import database.DatabaseHandler;
 import model.Book;
-import model.User; // <-- ADD THIS IMPORT
+import model.User; 
 
 public class MainFrame extends JFrame {
     private final DatabaseHandler dbHandler;
@@ -37,12 +37,11 @@ public class MainFrame extends JFrame {
     private final JTextField titleField, authorField, yearField;
     private ValueEventListener booksListener;
     private final JButton logoutButton;
-    private final User currentUser; // <-- ADDED: Store the current user
+    private final User currentUser; 
 
 
-    // MODIFIED: Constructor accepts User object
     public MainFrame(User user) {
-        this.currentUser = user; // Store the logged-in user
+        this.currentUser = user; 
         dbHandler = new DatabaseHandler();
 
         if (dbHandler.isInitializationFailed()) {
@@ -53,7 +52,7 @@ public class MainFrame extends JFrame {
             });
         }
 
-        setTitle("Library Management System - User: " + currentUser.getEmail()); // Display user email
+        setTitle("Library Management System - User: " + currentUser.getEmail()); 
         setSize(650, 500); 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         setLocationRelativeTo(null);
@@ -140,7 +139,6 @@ public class MainFrame extends JFrame {
 
             int year = Integer.parseInt(yearText);
             Book book = new Book(title, author, year); 
-            // MODIFIED: Pass currentUser's UID
             dbHandler.addBook(currentUser.getUid(), book);
             clearInputFields();
         } catch (NumberFormatException ex) {
@@ -195,7 +193,6 @@ public class MainFrame extends JFrame {
                 );
             }
         };
-        // MODIFIED: Pass currentUser's UID
         dbHandler.addBooksValueEventListener(currentUser.getUid(), booksListener);
     }
 
@@ -224,7 +221,6 @@ public class MainFrame extends JFrame {
     private void performCleanupForLogout() {
         if (dbHandler != null && booksListener != null && !dbHandler.isInitializationFailed() &&
             currentUser != null && currentUser.getUid() != null) {
-            // MODIFIED: Pass currentUser's UID
             dbHandler.removeBooksValueEventListener(currentUser.getUid(), booksListener);
             System.out.println("Firebase listener removed for user " + currentUser.getEmail() + " upon logout.");
         }

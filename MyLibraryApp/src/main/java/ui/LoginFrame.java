@@ -1,7 +1,7 @@
 package ui;
 
 import database.DatabaseHandler;
-import model.User; // <-- ADD THIS IMPORT
+import model.User; 
 
 import javax.swing.*;
 
@@ -107,7 +107,6 @@ public class LoginFrame extends JFrame {
         loginButton.setText("Logging in...");
         statusLabel.setText(" "); 
 
-        // MODIFIED: SwingWorker now expects User object
         SwingWorker<User, Void> worker = new SwingWorker<User, Void>() {
             @Override
             protected User doInBackground() throws Exception {
@@ -117,10 +116,10 @@ public class LoginFrame extends JFrame {
             @Override
             protected void done() {
                 try {
-                    User authenticatedUser = get(); // Get the User object
-                    if (authenticatedUser != null) { // Check if User object is not null
+                    User authenticatedUser = get(); 
+                    if (authenticatedUser != null) { 
                         dispose(); 
-                        new MainFrame(authenticatedUser).setVisible(true); // Pass User to MainFrame
+                        new MainFrame(authenticatedUser).setVisible(true); 
                     } else {
                         JOptionPane.showMessageDialog(LoginFrame.this,
                                 "Invalid email or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);

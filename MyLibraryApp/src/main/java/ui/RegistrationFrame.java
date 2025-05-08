@@ -36,16 +36,15 @@ public class RegistrationFrame extends JFrame {
     private final JLabel loginLabel;
     private final DatabaseHandler dbHandler;
 
-    // Basic email validation pattern
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
 
 
     public RegistrationFrame() {
-        dbHandler = new DatabaseHandler(); // Initializes Firebase
+        dbHandler = new DatabaseHandler(); 
         setTitle("User Registration");
-        setSize(450, 350); // Adjusted size
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Or DISPOSE_ON_CLOSE if LoginFrame is main entry
+        setSize(450, 350); 
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new GridBagLayout());
@@ -55,12 +54,11 @@ public class RegistrationFrame extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         if (dbHandler.isInitializationFailed()) {
-            // Add a status label or disable form if Firebase init failed critically
             JLabel errorLabel = new JLabel("<html><center>Firebase initialization failed.<br>Registration is not available.</center></html>", JLabel.CENTER);
             errorLabel.setForeground(Color.RED);
             gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
             panel.add(errorLabel, gbc);
-            gbc.gridy++; gbc.gridwidth = 1; // Reset
+            gbc.gridy++; gbc.gridwidth = 1; 
         }
 
         gbc.gridx = 0; gbc.gridy = 1; panel.add(new JLabel("Display Name:"), gbc);
@@ -99,7 +97,6 @@ public class RegistrationFrame extends JFrame {
 
         add(panel);
 
-        // Allow registration with Enter key on confirm password field
         confirmPasswordField.addActionListener(event -> registerAction());
         
         if (dbHandler.isInitializationFailed()) {
@@ -140,25 +137,22 @@ public class RegistrationFrame extends JFrame {
         registerButton.setEnabled(false);
         registerButton.setText("Registering...");
 
-        // Use SwingWorker for background Firebase operation
         SwingWorker<UserRecord, String> worker = new SwingWorker<UserRecord, String>() {
             @Override
             protected UserRecord doInBackground() throws Exception {
-                // The registerUser method now returns a CompletableFuture
-                // We get the result of the future here (blocks this worker thread, not EDT)
                 return dbHandler.registerUser(email, password, displayName).get();
             }
 
             @Override
             protected void done() {
                 try {
-                    UserRecord userRecord = get(); // This can throw ExecutionException if doInBackground failed
+                    UserRecord userRecord = get(); 
                     JOptionPane.showMessageDialog(RegistrationFrame.this,
                             "User registered successfully: " + userRecord.getEmail() + "\nPlease login.",
                             "Registration Successful", JOptionPane.INFORMATION_MESSAGE);
                     openLoginFrame();
                 } catch (InterruptedException | ExecutionException ex) {
-                    Throwable cause = ex.getCause(); // Get the actual exception from CompletableFuture
+                    Throwable cause = ex.getCause(); 
                     String errorMessage = "An error occurred during registration: ";
                     if (!(cause instanceof FirebaseAuthException)) if (cause != null) {
                         errorMessage += cause.getMessage();
